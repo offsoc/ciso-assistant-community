@@ -49,14 +49,14 @@
 
 	let formDataCache: {[key: string]: any} = {};
 
-	let _sessionStorage = null;
+	// let _sessionStorage = null;
 	onMount(() => {
-		if (caching) {
+		/* if (caching) {
 			_sessionStorage = sessionStorage;
 			const data = JSON.parse(sessionStorage.getItem("model_form_cache") ?? '{}');
 			const modelData = data[model.name] ?? {};
 			formDataCache = {...modelData};
-		}
+		} */
 
 		if (shape.reference_control) {
 			const reference_control_input: HTMLElement | null = document.querySelector(
@@ -66,11 +66,11 @@
 		}
 	});
 
-	$: if (caching && _sessionStorage && formDataCache) {
+	/* $: if (caching && _sessionStorage && formDataCache) {
 		const data = JSON.parse(_sessionStorage.getItem("model_form_cache") ?? '{}');
 		data[model.name] = formDataCache;
 		_sessionStorage.setItem("model_form_cache", JSON.stringify(data));
-	}
+	} */
 </script>
 
 <SuperForm
