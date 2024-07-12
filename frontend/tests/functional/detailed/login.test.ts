@@ -38,7 +38,9 @@ test('login invalid message is showing properly', async ({ loginPage, page }) =>
 	await loginPage.hasUrl();
 });
 
-test('forgot password process is working properly', async ({
+test('forgot password process is working properly', {
+	tag: "@debugtag"
+}, async ({
 	logedPage,
 	usersPage,
 	sideBar,

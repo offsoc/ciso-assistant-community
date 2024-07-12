@@ -25,7 +25,9 @@ Object.entries(userGroups).forEach(([userGroup, userGroupData]) => {
 		});
 
 		test.use({ data: testObjectsData });
-		test('user can set his password', async ({
+		test('user can set his password', {
+			tag: "@debugtag"
+		}, async ({
 			populateDatabase,
 			logedPage,
 			usersPage,

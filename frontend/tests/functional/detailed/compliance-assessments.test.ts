@@ -5,7 +5,9 @@ import { TestContent, test, expect } from '../../utils/test-utils.js';
 let vars = TestContent.generateTestVars();
 let testObjectsData: { [k: string]: any } = TestContent.itemBuilder(vars);
 
-test('compliance assessments scoring is working properly', async ({
+test('compliance assessments scoring is working properly', {
+	tag: "@debugtag"
+}, async ({
 	logedPage,
 	pages,
 	complianceAssessmentsPage,
