@@ -618,6 +618,7 @@
 	"sso": "SSO",
 	"isSso": "هل هو SSO",
 	"size": "الحجم",
+	"objectType": "نوع الكائن",
 	"requirementMappingSets": "ربط الأطر",
 	"financial": "المالي",
 	"legal": "القانوني",

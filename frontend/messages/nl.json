@@ -618,6 +618,7 @@
 	"duplicate": "Duplicaat",
 	"duplicateRiskAssessment": "Dupliceer de risicobeoordeling",
 	"size": "Grootte",
+	"objectType": "objecttype",
 	"financial": "Financieel",
 	"legal": "Juridisch",
 	"reputation": "Reputatie",

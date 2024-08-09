@@ -618,6 +618,7 @@
 	"duplicate": "Dupliquer",
 	"duplicateRiskAssessment": "Dupliquer l’évaluation de risque",
 	"size": "Taille",
+	"objectType": "Type d'objet",
 	"financial": "Financier",
 	"legal": "Juridique",
 	"reputation": "Réputation",

@@ -663,6 +663,7 @@
 	"duplicate": "Duplicate",
 	"duplicateRiskAssessment": "Duplicate the risk assessment",
 	"size": "Size",
+	"objectType": "Object type",
 	"financial": "Financial",
 	"legal": "Legal",
 	"reputation": "Reputation",
