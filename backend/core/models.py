@@ -1135,7 +1135,7 @@ class Evidence(NameDescriptionMixin, FolderMixin, PublishInRootFolderMixin):
     )
     link = models.URLField(
         blank=True,
-        null=True,
+        default="",
         help_text=_("Link to the evidence (eg. Jira ticket, etc.)"),
         verbose_name=_("Link"),
     )
