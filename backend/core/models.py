@@ -50,20 +50,20 @@ class ReferentialObjectMixin(AbstractBaseModel, FolderMixin):
     Mixin for referential objects.
     """
 
-    urn = models.CharField(
-        max_length=255, null=True, blank=True, unique=True, verbose_name=_("URN")
+    urn = models.CharField( # We should remove unique=True or not ?
+        max_length=255, blank=True, default="", unique=True, verbose_name=_("URN")
     )
     ref_id = models.CharField(
-        max_length=100, blank=True, null=True, verbose_name=_("Reference ID")
+        max_length=100, blank=True, default="", verbose_name=_("Reference ID")
     )
     provider = models.CharField(
-        max_length=200, blank=True, null=True, verbose_name=_("Provider")
+        max_length=200, blank=True, default="", verbose_name=_("Provider")
     )
     name = models.CharField(
-        null=True, max_length=200, verbose_name=_("Name"), unique=False
+        max_length=200, default="", blank=True, verbose_name=_("Name"), unique=False
     )
-    description = models.TextField(null=True, blank=True, verbose_name=_("Description"))
-    annotation = models.TextField(null=True, blank=True, verbose_name=_("Annotation"))
+    description = models.TextField(blank=True, default="", verbose_name=_("Description"))
+    annotation = models.TextField(blank=True, default="", verbose_name=_("Annotation"))
     translations = models.JSONField(
         null=True, blank=True, verbose_name=_("Translations")
     )
@@ -132,15 +132,15 @@ class LibraryMixin(ReferentialObjectMixin, I18nObjectMixin):
         abstract = True
         unique_together = [["urn", "locale", "version"]]
 
-    urn = models.CharField(max_length=255, null=True, blank=True, verbose_name=_("URN"))
+    urn = models.CharField(max_length=255, blank=True, default="", verbose_name=_("URN"))
     copyright = models.CharField(
-        max_length=4096, null=True, blank=True, verbose_name=_("Copyright")
+        max_length=4096, blank=True, default="", verbose_name=_("Copyright")
     )
     version = models.IntegerField(null=False, verbose_name=_("Version"))
     packager = models.CharField(
         max_length=100,
         blank=True,
-        null=True,
+        default="",
         help_text=_("Packager of the library"),
         verbose_name=_("Packager"),
     )
@@ -148,7 +148,7 @@ class LibraryMixin(ReferentialObjectMixin, I18nObjectMixin):
     objects_meta = models.JSONField(default=dict)
     dependencies = models.JSONField(
         null=True
-    )  # models.CharField(blank=False,null=True,max_length=16384)
+    )
 
     @property
     def get_locales(self):
@@ -684,17 +684,17 @@ class ReferenceControl(ReferentialObjectMixin, I18nObjectMixin):
 
     category = models.CharField(
         max_length=20,
-        null=True,
         blank=True,
+        default="",
         choices=CATEGORY,
         verbose_name=_("Category"),
     )
 
     csf_function = models.CharField(
         max_length=20,
-        null=True,
         blank=True,
         choices=CSF_FUNCTION,
+        default="",
         verbose_name=_("CSF Function"),
     )
 
@@ -756,7 +756,7 @@ class RiskMatrix(ReferentialObjectMixin, I18nObjectMixin):
         ),
     )
     provider = models.CharField(
-        max_length=200, blank=True, null=True, verbose_name=_("Provider")
+        max_length=200, blank=True, default="", verbose_name=_("Provider")
     )
 
     @property
@@ -905,7 +905,7 @@ class RequirementNode(ReferentialObjectMixin, I18nObjectMixin):
         related_name="requirement_nodes",
     )
     parent_urn = models.CharField(
-        max_length=255, null=True, blank=True, verbose_name=_("Parent URN")
+        max_length=255, blank=True, default="", verbose_name=_("Parent URN")
     )
     order_id = models.IntegerField(null=True, verbose_name=_("Order ID"))
     implementation_groups = models.JSONField(
@@ -913,7 +913,7 @@ class RequirementNode(ReferentialObjectMixin, I18nObjectMixin):
     )
     assessable = models.BooleanField(null=False, verbose_name=_("Assessable"))
     typical_evidence = models.TextField(
-        null=True, blank=True, verbose_name=_("Typical evidence")
+        blank=True, default="", verbose_name=_("Typical evidence")
     )
 
     class Meta:
@@ -997,9 +997,9 @@ class RequirementMapping(models.Model):
     )
     rationale = models.CharField(
         max_length=20,
-        null=True,
         blank=True,
         choices=Rationale.choices,
+        default="",
         verbose_name=_("Rationale"),
     )
     source_requirement = models.ForeignKey(
@@ -1013,7 +1013,7 @@ class RequirementMapping(models.Model):
         verbose_name=_("Strength of relationship"),
         validators=[MaxValueValidator(10)],
     )
-    annotation = models.TextField(null=True, blank=True, verbose_name=_("Annotation"))
+    annotation = models.TextField(blank=True, default="", verbose_name=_("Annotation"))
 
     @property
     def coverage(self) -> str:
@@ -1037,7 +1037,7 @@ class Project(NameDescriptionMixin, FolderMixin):
         ("dropped", _("Dropped")),
     ]
     internal_reference = models.CharField(
-        max_length=100, null=True, blank=True, verbose_name=_("Internal reference")
+        max_length=100, blank=True, default="", verbose_name=_("Internal reference")
     )
     lc_status = models.CharField(
         max_length=20,
@@ -1204,21 +1204,21 @@ class AppliedControl(NameDescriptionMixin, FolderMixin, PublishInRootFolderMixin
     category = models.CharField(
         max_length=20,
         choices=CATEGORY,
-        null=True,
+        default="",
         blank=True,
         verbose_name=_("Category"),
     )
     csf_function = models.CharField(
         max_length=20,
         choices=CSF_FUNCTION,
-        null=True,
+        default="",
         blank=True,
         verbose_name=_("CSF Function"),
     )
     status = models.CharField(
         max_length=20,
         choices=Status.choices,
-        null=True,
+        default="",
         blank=True,
         verbose_name=_("Status"),
     )
@@ -1235,17 +1235,17 @@ class AppliedControl(NameDescriptionMixin, FolderMixin, PublishInRootFolderMixin
         verbose_name=_("Expiry date"),
     )
     link = models.CharField(
-        null=True,
         blank=True,
+        default="",
         max_length=1000,
         help_text=_("External url for action follow-up (eg. Jira ticket)"),
         verbose_name=_("Link"),
     )
     effort = models.CharField(
-        null=True,
         blank=True,
         max_length=2,
         choices=EFFORT,
+        default="",
         help_text=_("Relative effort of the measure (using T-Shirt sizing)"),
         verbose_name=_("Effort"),
     )
@@ -1353,7 +1353,6 @@ class Assessment(NameDescriptionMixin, ETADueDateMixin):
     version = models.CharField(
         max_length=100,
         blank=True,
-        null=True,
         help_text=_("Version of the compliance assessment (eg. 1.0, 2.0, etc.)"),
         verbose_name=_("Version"),
         default="1.0",
@@ -1364,7 +1363,6 @@ class Assessment(NameDescriptionMixin, ETADueDateMixin):
         default=Status.PLANNED,
         verbose_name=_("Status"),
         blank=True,
-        null=True,
     )
     authors = models.ManyToManyField(
         User,
@@ -1793,7 +1791,7 @@ class RiskScenario(NameDescriptionMixin):
         help_text=_("The strength of the knowledge supporting the assessment"),
     )
     justification = models.CharField(
-        max_length=500, blank=True, null=True, verbose_name=_("Justification")
+        max_length=500, blank=True, default="", verbose_name=_("Justification")
     )
 
     fields_to_check = ["name"]
@@ -2361,7 +2359,7 @@ class RequirementAssessment(AbstractBaseModel, FolderMixin, ETADueDateMixin):
         verbose_name=_("Evidences"),
         related_name="requirement_assessments",
     )
-    observation = models.TextField(null=True, blank=True, verbose_name=_("Observation"))
+    observation = models.TextField(blank=True, default="", verbose_name=_("Observation"))
     compliance_assessment = models.ForeignKey(
         ComplianceAssessment,
         on_delete=models.CASCADE,
@@ -2467,7 +2465,7 @@ class RiskAcceptance(NameDescriptionMixin, FolderMixin, PublishInRootFolderMixin
         blank=True, null=True, verbose_name=_("Revocation date")
     )
     justification = models.CharField(
-        max_length=500, blank=True, null=True, verbose_name=_("Justification")
+        max_length=500, blank=True, default="", verbose_name=_("Justification")
     )
 
     fields_to_check = ["name"]

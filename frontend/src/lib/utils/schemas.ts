@@ -47,7 +47,7 @@ const nameSchema = z
 	})
 	.min(1);
 
-const descriptionSchema = z.string().optional().nullable();
+const descriptionSchema = z.string().optional();
 
 const baseNamedObject = (additionalFields: any) =>
 	z.object({
@@ -89,9 +89,9 @@ export const RiskAssessmentSchema = baseNamedObject({
 
 export const ThreatSchema = baseNamedObject({
 	folder: z.string(),
-	provider: z.string().optional().nullable(),
-	ref_id: z.string().optional().nullable(),
-	annotation: z.string().optional().nullable()
+	provider: z.string().optional(),
+	ref_id: z.string().optional(),
+	annotation: z.string().optional()
 });
 
 export const RiskScenarioSchema = baseNamedObject({
