@@ -73,7 +73,7 @@
 			{...$$restProps}
 		>
 			{#if !$constraints?.required && !options.find( (o) => new Set( ['--', 'undefined'] ).has(o.label.toLowerCase()) )}
-				<option value={null} selected>--</option>
+				<option value="" selected>--</option>
 			{/if}
 			{#each options as option}
 				<option value={option.value} style="background-color: {color_map[option.value]}">

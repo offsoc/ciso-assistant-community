@@ -62,7 +62,7 @@ export const FolderSchema = baseNamedObject({
 
 export const ProjectSchema = baseNamedObject({
 	folder: z.string(),
-	internal_reference: z.string().optional().nullable(),
+	internal_reference: z.string().optional(),
 	lc_status: z.string().optional().default('in_design')
 });
 
@@ -79,7 +79,7 @@ export const LibraryUploadSchema = z.object({
 export const RiskAssessmentSchema = baseNamedObject({
 	version: z.string().optional().default('0.1'),
 	project: z.string(),
-	status: z.string().optional().nullable(),
+	status: z.string().optional(),
 	risk_matrix: z.string(),
 	eta: z.string().optional().nullable(),
 	due_date: z.string().optional().nullable(),
@@ -101,9 +101,9 @@ export const RiskScenarioSchema = baseNamedObject({
 	current_impact: z.number().optional(),
 	residual_proba: z.number().optional(),
 	residual_impact: z.number().optional(),
-	treatment: z.string().optional(),
+	treatment: z.string().default("open"),
 	strength_of_knowledge: z.number().default(-1).optional(),
-	justification: z.string().optional().nullable(),
+	justification: z.string().optional(),
 	risk_assessment: z.string(),
 	threats: z.string().uuid().optional().array().optional(),
 	assets: z.string().uuid().optional().array().optional(),
@@ -111,26 +111,26 @@ export const RiskScenarioSchema = baseNamedObject({
 });
 
 export const AppliedControlSchema = baseNamedObject({
-	category: z.string().optional().nullable(),
-	csf_function: z.string().optional().nullable(),
-	status: z.string().optional().nullable(),
+	category: z.string().optional(),
+	csf_function: z.string().optional(),
+	status: z.string().optional(),
 	evidences: z.string().optional().array().optional(),
 	eta: z.string().optional().nullable(),
 	expiry_date: z.string().optional().nullable(),
 	link: z.string().url().optional().or(z.literal('')),
-	effort: z.string().optional().nullable(),
+	effort: z.string().optional(),
 	folder: z.string(),
 	reference_control: z.string().optional().nullable()
 });
 
 export const PolicySchema = baseNamedObject({
-	csf_function: z.string().optional().nullable(),
-	status: z.string().optional().nullable(),
+	csf_function: z.string().optional(),
+	status: z.string().optional(),
 	evidences: z.string().optional().array().optional(),
 	eta: z.string().optional().nullable(),
 	expiry_date: z.string().optional().nullable(),
 	link: z.string().url().optional().or(z.literal('')),
-	effort: z.string().optional().nullable(),
+	effort: z.string().optional(),
 	folder: z.string(),
 	reference_control: z.string().optional().nullable()
 });
@@ -138,18 +138,18 @@ export const PolicySchema = baseNamedObject({
 export const RiskAcceptanceSchema = baseNamedObject({
 	folder: z.string(),
 	expiry_date: z.string().optional().nullable(),
-	justification: z.string().optional().nullable(),
+	justification: z.string().optional(),
 	approver: z.string(),
 	risk_scenarios: z.array(z.string())
 });
 
 export const ReferenceControlSchema = baseNamedObject({
-	provider: z.string().optional().nullable(),
-	category: z.string().optional().nullable(),
-	csf_function: z.string().optional().nullable(),
+	provider: z.string().optional(),
+	category: z.string().optional(),
+	csf_function: z.string().optional(),
 	folder: z.string(),
-	ref_id: z.string().optional().nullable(),
-	annotation: z.string().optional().nullable()
+	ref_id: z.string().optional(),
+	annotation: z.string().optional()
 });
 
 export const AssetSchema = baseNamedObject({
@@ -170,7 +170,7 @@ export const RequirementAssessmentSchema = z.object({
 	evidences: z.array(z.string().uuid().optional()).optional(),
 	compliance_assessment: z.string(),
 	applied_controls: z.array(z.string().uuid().optional()).optional(),
-	observation: z.string().optional().nullable()
+	observation: z.string().optional()
 });
 
 export const UserEditSchema = z.object({
@@ -202,7 +202,7 @@ export const SetPasswordSchema = z.object({
 export const ComplianceAssessmentSchema = baseNamedObject({
 	version: z.string().optional().default('0.1'),
 	project: z.string(),
-	status: z.string().optional().nullable(),
+	status: z.string().optional(),
 	selected_implementation_groups: z.array(z.string().optional()).optional(),
 	framework: z.string(),
 	eta: z.string().optional().nullable(),

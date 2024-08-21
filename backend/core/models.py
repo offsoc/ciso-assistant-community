@@ -51,7 +51,7 @@ class ReferentialObjectMixin(AbstractBaseModel, FolderMixin):
     """
 
     urn = models.CharField( # We should remove unique=True or not ?
-        max_length=255, blank=True, default="", unique=True, verbose_name=_("URN")
+        max_length=255, null=True, unique=True, verbose_name=_("URN")
     )
     ref_id = models.CharField(
         max_length=100, blank=True, default="", verbose_name=_("Reference ID")
@@ -1186,7 +1186,7 @@ class AppliedControl(NameDescriptionMixin, FolderMixin, PublishInRootFolderMixin
         ("XL", _("Extra Large")),
     ]
 
-    MAP_EFFORT = {None: -1, "S": 1, "M": 2, "L": 4, "XL": 8}
+    MAP_EFFORT = {"S": 1, "M": 2, "L": 4, "XL": 8}
     # todo: think about a smarter model for ranking
     reference_control = models.ForeignKey(
         ReferenceControl,
@@ -1296,7 +1296,7 @@ class AppliedControl(NameDescriptionMixin, FolderMixin, PublishInRootFolderMixin
             residual = risk_scenario.residual_level
             if current >= 0 and residual >= 0:
                 value += (1 + current - residual) * (current + 1)
-        return abs(round(value / self.MAP_EFFORT[self.effort], 4))
+        return abs(round(value / self.MAP_EFFORT.get(self.effort, -1), 4))
 
     @property
     def get_html_url(self):
