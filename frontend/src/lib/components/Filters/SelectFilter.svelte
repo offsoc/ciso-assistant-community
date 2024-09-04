@@ -44,7 +44,7 @@
 		closeDropdownOnSelect: !multiple
 	};
 
-	onMount(async () => {
+	/* onMount(async () => {
 		const cacheResult = await cacheLock.promise;
 		if (cacheResult && cacheResult.length > 0) {
 			value = cacheResult.map((option) => {
@@ -55,7 +55,7 @@
 				};
 			});
 		}
-	});
+	}); */
 </script>
 
 {#if !hide}
