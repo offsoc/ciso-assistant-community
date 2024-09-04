@@ -195,7 +195,7 @@
 		goto(newHref);
 	};
 
-	$: if (browser) {
+	/* $: if (browser) {
 		const filterList = {};
 		for (const field of filteredFields) {
 			const values = filterValues[field] ? filterValues[field].map(option => option.value) : [];
@@ -215,7 +215,7 @@
 			);
 		}
 		setFiltersInUrl(filterList);
-	}
+	} */
 
 	let allowOptionsUpdate = true;
 	allRows.subscribe((rows) => {
