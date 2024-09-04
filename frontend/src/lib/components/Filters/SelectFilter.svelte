@@ -44,7 +44,8 @@
 		closeDropdownOnSelect: !multiple
 	};
 
-	onMount(async () => {
+	/* onMount(async () => {
+		// Try to comment all this onMount ?
 		const cacheResult = await cacheLock.promise;
 		if (cacheResult && cacheResult.length > 0) {
 			value = cacheResult.map((option) => {
@@ -55,7 +56,7 @@
 				};
 			});
 		}
-	});
+	}); */
 </script>
 
 {#if !hide}
