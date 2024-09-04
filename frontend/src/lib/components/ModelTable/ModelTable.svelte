@@ -254,7 +254,8 @@
 			])
 		);
 		for (const [field, value] of Object.entries(urlFilterValues)) {
-			filterCacheLocks[field].resolve(value);
+			// The bug comes from her according to the other debug branch
+			// filterCacheLocks[field].resolve(value);
 		}
 	});
 
