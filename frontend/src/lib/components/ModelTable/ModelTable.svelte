@@ -246,7 +246,7 @@
 				? handler.sortAsc(orderBy.identifier)
 				: handler.sortDesc(orderBy.identifier);
 		}
-		const queryParams = parseQueryParams($page.url.search);
+		/* const queryParams = parseQueryParams($page.url.search);
 		const urlFilterValues = Object.fromEntries(
 			Object.entries(queryParams)
 			.map(([key, value]) => [
@@ -256,7 +256,7 @@
 		);
 		for (const [field, value] of Object.entries(urlFilterValues)) {
 			filterCacheLocks[field].resolve(value);
-		}
+		} */
 	});
 
 	$: field_component_map = FIELD_COMPONENT_MAP[URLModel] ?? {};
