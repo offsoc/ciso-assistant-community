@@ -2,7 +2,7 @@ from pathlib import Path
 
 import structlog, signal
 from ciso_assistant.settings import LIBRARIES_PATH
-from core.models import StoredLibrary
+from core.models import StoredLibrary, LoadedLibrary
 from django.core.management.base import BaseCommand
 
 logger = structlog.getLogger(__name__)
@@ -37,3 +37,15 @@ class Command(BaseCommand):
                     )
             except:
                 logger.error("Invalid library file", filename=fname)
+        # check consistency of is_loaded
+        loaded_library_urns = set([k.urn for k in LoadedLibrary.objects.all()])
+        for lib in StoredLibrary.objects.all():
+            if lib.urn in loaded_library_urns and not lib.is_loaded:
+                print("Fixing (set) is_loaded for", lib.urn)
+                lib.is_loaded = True
+                lib.save()
+            elif lib.urn not in loaded_library_urns and lib.is_loaded:
+                print("Fixing (reset) is_loaded for", lib.urn)
+                lib.is_loaded = False
+                lib.save()
+            print(lib.is_loaded, lib.urn)

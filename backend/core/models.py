@@ -250,14 +250,14 @@ class StoredLibrary(LibraryMixin):
         locale = library_data.get("locale", "en")
         version = int(library_data["version"])
         is_loaded = LoadedLibrary.objects.filter(  # We consider the library as loaded even if the loaded version is different
-            urn=urn, locale=locale
+            urn=urn
         ).exists()
         if StoredLibrary.objects.filter(urn=urn, locale=locale, version__gte=version):
             return None  # We do not accept to store outdated libraries
 
         # This code allows adding outdated libraries in the library store but they will be erased if a greater version of this library is stored.
         for outdated_library in StoredLibrary.objects.filter(
-            urn=urn, locale=locale, version__lt=version
+            urn=urn, version__lt=version
         ):
             outdated_library.delete()
 
@@ -305,9 +305,8 @@ class StoredLibrary(LibraryMixin):
     def load(self) -> Union[str, None]:
         from library.utils import LibraryImporter
 
-        if LoadedLibrary.objects.filter(urn=self.urn, locale=self.locale):
+        if LoadedLibrary.objects.filter(urn=self.urn):
             return "This library has already been loaded."
-
         library_importer = LibraryImporter(self)
         error_msg = library_importer.import_library()
         if error_msg is None:
