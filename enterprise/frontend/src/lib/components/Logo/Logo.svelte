@@ -12,6 +12,7 @@
 
 	export let height = 200;
 	export let width = 200;
+	export let classesText = '';
 
 	const clientSettings = $page.data.clientSettings;
 	let logo: string;
@@ -38,6 +39,6 @@
 		<img {width} {height} src={logo} alt="Ciso-assistant icon" />
 	{/if}
 	{#if clientSettings.settings.name}
-		<p class="font-semibold text-center">{clientSettings.settings.name}</p>
+		<p class="font-semibold text-center {classesText}">{clientSettings.settings.name}</p>
 	{/if}
 </div>
