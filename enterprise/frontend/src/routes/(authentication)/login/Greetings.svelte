@@ -23,6 +23,6 @@
 			</div>
 		</Typewriter>
 	{:else}
-		<Logo width={400} height={400} />
+		<Logo width={400} height={400} classesText="text-4xl mt-2" />
 	{/if}
 </div>
