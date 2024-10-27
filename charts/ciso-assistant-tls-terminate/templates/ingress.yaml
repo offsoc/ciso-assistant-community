@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/proxy-body-size: 50m
+    nginx.ingress.kubernetes.io/proxy-read-timeout: '300'
+    nginx.ingress.kubernetes.io/proxy-send-timeout: '300'
+  name: ciso-assistant-{{ .Values.clientName }}
+  labels:
+    client: {{ .Values.clientName }}
+    {{- include "common.labels" . | nindent 4 }}
+spec:
+  tls:
+  - hosts:
+    - {{ .Values.clientName }}.{{ .Values.clusterDomain }}
+  ingressClassName: nginx
+  rules:
+  - host: {{ .Values.clientName }}.{{ .Values.clusterDomain }}
+    http:
+      paths:
+      - backend:
+          service:
+            name: ciso-assistant-{{ .Values.clientName }}
+            port:
+              number: 3000
+        path: /
+        pathType: Prefix
