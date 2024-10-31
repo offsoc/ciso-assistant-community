@@ -1345,8 +1345,6 @@ class FolderViewSet(BaseModelViewSet):
         return Response(tree)
 
 
-@cache_page(60 * SHORT_CACHE_TTL)
-@vary_on_cookie
 @api_view(["GET"])
 @permission_classes([permissions.IsAuthenticated])
 def get_counters_view(request):
@@ -1356,8 +1354,6 @@ def get_counters_view(request):
     return Response({"results": get_counters(request.user)})
 
 
-@cache_page(60 * SHORT_CACHE_TTL)
-@vary_on_cookie
 @api_view(["GET"])
 @permission_classes([permissions.IsAuthenticated])
 def get_metrics_view(request):
@@ -1370,8 +1366,6 @@ def get_metrics_view(request):
 # TODO: Add all the proper docstrings for the following list of functions
 
 
-@cache_page(60 * SHORT_CACHE_TTL)
-@vary_on_cookie
 @api_view(["GET"])
 @permission_classes([permissions.IsAuthenticated])
 def get_agg_data(request):
@@ -1900,8 +1894,6 @@ class ComplianceAssessmentViewSet(BaseModelViewSet):
         ]
         return Response({"results": res})
 
-    @method_decorator(cache_page(60 * SHORT_CACHE_TTL))
-    @method_decorator(vary_on_cookie)
     @action(detail=True, methods=["get"])
     def global_score(self, request, pk):
         """Returns the global score of the compliance assessment"""
@@ -1999,8 +1991,6 @@ class ComplianceAssessmentViewSet(BaseModelViewSet):
         else:
             return Response({"error": "Permission denied"})
 
-    @method_decorator(cache_page(60 * SHORT_CACHE_TTL))
-    @method_decorator(vary_on_cookie)
     @action(detail=True, methods=["get"])
     def donut_data(self, request, pk):
         compliance_assessment = ComplianceAssessment.objects.get(id=pk)
