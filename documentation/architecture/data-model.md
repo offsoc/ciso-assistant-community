@@ -1357,6 +1357,9 @@ erDiagram
     FEARED_EVENT          }o--o{ QUALIFICATION        : bears
     PROJECT_OBJECT        |o--o{ EBIOS_RM_STUDY       : contains
     PERIMETER             |o--o{ EBIOS_RM_STUDY       : contains
+    CONFRONTATION         }o--|| EBIOS_RM_STUDY       : contains
+    CONFRONTATION         }o--|| FEARED_EVENT         : contains
+    CONFRONTATION         }o--|| RO_TO                : contains
 
     EBIOS_RM_STUDY {
         string      ref_id
