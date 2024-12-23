@@ -39,6 +39,11 @@ class EbiosRMStudyReadSerializer(BaseModelSerializer):
     authors = FieldsRelatedField(many=True)
     reviewers = FieldsRelatedField(many=True)
 
+    roto_count = serializers.IntegerField()
+    selected_roto_count = serializers.IntegerField()
+    selected_attack_path_count = serializers.IntegerField()
+    operational_scenario_count = serializers.IntegerField()
+
     class Meta:
         model = EbiosRMStudy
         fields = "__all__"
