@@ -9,7 +9,7 @@ import { cisoTheme } from './ciso-theme';
 
 const config = {
 	// 2. Opt for dark mode to be handled via the class method
-	darkMode: 'class',
+	darkMode: 'selector',
 	content: [
 		'./src/**/*.{html,js,svelte,ts}',
 		// 3. Append the path to the Skeleton package
@@ -24,6 +24,7 @@ const config = {
 		require('@tailwindcss/forms'),
 		skeleton({
 			themes: {
+				preset: ['skeleton', 'modern', 'crimson', 'seafoam', 'vintage', 'hamlindigo', 'wintry'],
 				custom: [cisoTheme]
 			}
 		}),

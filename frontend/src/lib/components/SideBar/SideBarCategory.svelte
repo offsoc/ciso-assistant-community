@@ -3,6 +3,8 @@
 	import { safeTranslate } from '$lib/utils/i18n';
 </script>
 
-<span class="whitespace-nowrap text-primary-800 font-semibold uppercase tracking-tighter text-xs">
+<span
+	class="whitespace-nowrap text-primary-800-100-token font-semibold uppercase tracking-tighter text-xs"
+>
 	{safeTranslate(item.name)}
 </span>

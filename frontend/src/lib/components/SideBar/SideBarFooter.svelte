@@ -104,7 +104,7 @@
 			><i class="fa-solid fa-ellipsis-vertical" /></button
 		>
 		<div
-			class="card whitespace-nowrap bg-white py-2 w-fit shadow-lg space-y-1"
+			class="card whitespace-nowrap bg-surface-50-900-token py-2 w-fit shadow-lg space-y-1"
 			data-testid="sidebar-more-panel"
 			data-popup="popupUser"
 		>
@@ -113,13 +113,13 @@
 				on:click={(e) => {
 					window.location.href = e.target.href;
 				}}
-				class="unstyled cursor-pointer flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-gray-100 disabled:text-gray-500 text-gray-800"
+				class="unstyled cursor-pointer flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-surface-100-800-token disabled:text-surface-500-400-token text-surface-800-100-token"
 				data-testid="profile-button"><i class="fa-solid fa-address-card mr-2" />{m.myProfile()}</a
 			>
 			<select
 				{value}
 				on:change={handleLocaleChange}
-				class="border-y-white border-x-gray-100 focus:border-y-white focus:border-x-gray-100 w-full cursor-pointer block text-sm text-gray-800 bg-white focus:ring-0"
+				class="border-transparent w-full cursor-pointer block text-sm text-surface-800-100-token bg-surface-50-900-token"
 				data-testid="language-select"
 			>
 				{#each availableLanguageTags as lang}
@@ -130,19 +130,19 @@
 			</select>
 			<button
 				on:click={modalBuildInfo}
-				class="cursor-pointer flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-gray-100 disabled:text-gray-500 text-gray-800"
+				class="cursor-pointer flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-surface-100-800-token disabled:text-surface-500-400-token text-surface-800-100-token"
 				data-testid="about-button"><i class="fa-solid fa-circle-info mr-2" />{m.aboutCiso()}</button
 			>
 			<a
 				href="https://intuitem.gitbook.io/ciso-assistant"
 				target="_blank"
-				class="unstyled cursor-pointer flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-gray-100 disabled:text-gray-500 text-gray-800"
+				class="cursor-pointer flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-surface-100-800-token disabled:text-surface-500-400-token text-surface-800-100-token"
 				data-testid="docs-button"><i class="fa-solid fa-book mr-2" />{m.onlineDocs()}</a
 			>
 			<form action="/logout" method="POST">
 				<button class="w-full" type="submit" data-testid="logout-button">
 					<span
-						class="flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-gray-100 disabled:text-gray-500 text-gray-800"
+						class="flex items-center gap-2 w-full px-4 py-2.5 text-left text-sm hover:bg-surface-100-800-token disabled:text-surface-500-400-token text-surface-800-100-token"
 						><i class="fa-solid fa-right-from-bracket mr-2" />{m.Logout()}</span
 					>
 				</button>

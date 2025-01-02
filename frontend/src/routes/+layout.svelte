@@ -23,6 +23,8 @@
 	import { getFlash } from 'sveltekit-flash-message';
 	import { page } from '$app/stores';
 
+	import { selectedTheme } from '$lib/utils/stores';
+
 	const flash = getFlash(page);
 	const toastStore = getToastStore();
 
@@ -81,6 +83,12 @@
 	$: if (browser && $page.url.searchParams.has('refresh')) {
 		$page.url.searchParams.delete('refresh');
 		window.location.href = $page.url.href;
+	}
+
+	$: {
+		if (browser) {
+			document.body.setAttribute('data-theme', $selectedTheme);
+		}
 	}
 </script>
 

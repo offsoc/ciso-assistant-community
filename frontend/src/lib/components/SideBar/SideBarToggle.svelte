@@ -13,7 +13,7 @@
 	on:click={toggle}
 	class="{classesSidebarOpenButton(
 		open
-	)} z-20 fixed w-6 h-6 rounded-full content-center self-center bg-white shadow border text-gray-600 hover:scale-105 hover:bg-primary-700 hover:text-white transition-all duration-300 top-1/2 bottom-1/2"
+	)} z-20 fixed w-6 h-6 rounded-full content-center self-center bg-surface-50-900-token shadow border text-surface-600-300-token hover:scale-105 hover:bg-primary-700-200-token hover:text-surface-50-900-token transition-all duration-300 top-1/2 bottom-1/2"
 	data-testid="sidebar-toggle-btn"
 >
 	<i class="fa-solid fa-angle-left" />

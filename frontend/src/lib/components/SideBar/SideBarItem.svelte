@@ -7,8 +7,8 @@
 
 	$: classesActive = (href: string) =>
 		href === $page.url.pathname
-			? 'bg-primary-100 text-primary-800'
-			: 'hover:bg-primary-50 text-gray-800 ';
+			? 'bg-primary-100-800-token text-primary-800-100-token'
+			: 'hover:bg-primary-50-900-token text-surface-800-100-token ';
 </script>
 
 {#each item as item}

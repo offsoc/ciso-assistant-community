@@ -87,8 +87,8 @@ export const cisoTheme: CustomThemeConfig = {
 		'--color-error-800': '143 41 41', // #8f2929
 		'--color-error-900': '117 33 33', // #752121
 		// surface | #94a3b8
-		'--color-surface-50': '239 241 244', // #eff1f4
-		'--color-surface-100': '234 237 241', // #eaedf1
+		'--color-surface-50': '255 255 255', // #ffffff
+		'--color-surface-100': '239 241 244', // #eff1f4
 		'--color-surface-200': '228 232 237', // #e4e8ed
 		'--color-surface-300': '212 218 227', // #d4dae3
 		'--color-surface-400': '180 191 205', // #b4bfcd

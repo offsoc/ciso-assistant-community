@@ -63,6 +63,7 @@
 		regionPanel="space-y-2"
 		caretClosed="-rotate-90"
 		caretOpen=""
+		hover="hover:bg-primary-100-800-token"
 	>
 		{#each items as item}
 			<!-- This commented code adds Accordion persistency but changes its visual behavior -->

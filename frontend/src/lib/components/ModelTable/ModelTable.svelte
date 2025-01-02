@@ -43,11 +43,12 @@
 	// Props (styles)
 	export let element: CssClasses = 'table';
 	export let text: CssClasses = 'text-xs';
-	export let backgroundColor: CssClasses = 'bg-white';
+	export let backgroundColor: CssClasses = 'bg-surface-50-900-token';
 	export let color: CssClasses = '';
 	export let regionHead: CssClasses = '';
-	export let regionHeadCell: CssClasses = 'uppercase bg-white text-gray-700';
-	export let regionBody: CssClasses = 'bg-white';
+	export let regionHeadCell: CssClasses =
+		'uppercase bg-surface-50-900-token text-surface-800-100-token';
+	export let regionBody: CssClasses = 'bg-surface-50-900-token';
 	export let regionCell: CssClasses = '';
 	export let regionFoot: CssClasses = '';
 	export let regionFootCell: CssClasses = '';
@@ -246,7 +247,7 @@
 				{/if}
 			</button>
 			<div
-				class="card p-2 bg-white max-w-lg shadow-lg space-y-2 border border-surface-200"
+				class="card p-2 bg-surface-50-900-token max-w-lg shadow-lg space-y-2 border border-surface-200"
 				data-popup="popupFilter"
 			>
 				{#each filteredFields as field}

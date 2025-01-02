@@ -27,6 +27,8 @@ export const expandedNodesState = persisted('expandedNodes', expandedNodes, {
 	storage: 'session'
 });
 
+export const selectedTheme = persisted('selectedTheme', 'ciso-theme', { storage: 'local' });
+
 export const createModalCache = {
 	_urlModel: '',
 	_cacheToDelete: new Set(),
